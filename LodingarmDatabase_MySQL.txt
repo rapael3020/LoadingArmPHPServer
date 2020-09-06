@@ -1,0 +1,100 @@
+﻿-- 테이블 순서는 관계를 고려하여 한 번에 실행해도 에러가 발생하지 않게 정렬되었습니다.
+
+-- Nomal User Table Create SQL
+CREATE TABLE Nomal_User
+(
+    `n_id`     VARCHAR(30)    NOT NULL    COMMENT 'ID', 
+    `n_name`   VARCHAR(30)    NULL        COMMENT '이름', 
+    `n_num`    INT            NULL        COMMENT '주민등록번호', 
+    `n_phone`  INT            NULL        COMMENT '연락처', 
+    `n_addr`   VARCHAR(45)    NULL        COMMENT '주소', 
+    `n_pw`     VARCHAR(30)    NULL        COMMENT '비밀번호', 
+    PRIMARY KEY (n_id)
+);
+
+ALTER TABLE Nomal_User COMMENT '일반사용자';
+
+
+-- Nomal User Table Create SQL
+CREATE TABLE Port information
+(
+    `p_id`            VARCHAR(45)    NOT NULL    COMMENT '항만고유번호', 
+    `p_name`          VARCHAR(30)    NULL        COMMENT '항만이름', 
+    `p_pw`            VARCHAR(45)    NULL        COMMENT '비밀번호', 
+    `p_area`          VARCHAR(30)    NULL        COMMENT '구역', 
+    `loadingarm_num`  VARCHAR(30)    NULL        COMMENT '로딩암고유번호', 
+    PRIMARY KEY (p_id)
+);
+
+ALTER TABLE Port_information COMMENT '항만정보';
+
+
+-- Nomal User Table Create SQL
+CREATE TABLE ship information
+(
+    `t_shipid`        VARCHAR(45)    NOT NULL    COMMENT '모선번호', 
+    `t_date`          DATETIME       NULL        COMMENT '반출일자', 
+    `loadingarm_num`  VARCHAR(45)    NULL        COMMENT '로딩암고유번호', 
+    PRIMARY KEY (t_shipid)
+);
+
+ALTER TABLE ship_information COMMENT '모선정보';
+
+
+-- Nomal User Table Create SQL
+CREATE TABLE Loadingarm_information
+(
+    `t_num`     VARCHAR(45)    NOT NULL    COMMENT '로딩암고유번호', 
+    `t_item`    VARCHAR(45)    NULL        COMMENT '로딩암운반품목', 
+    `user_id`   VARCHAR(30)    NULL        COMMENT '일반사용자ID', 
+    `port_num`  VARCHAR(45)    NULL        COMMENT '항만고유번호', 
+    PRIMARY KEY (t_num)
+);
+
+ALTER TABLE Loadingarm_information COMMENT '로딩암정보';
+
+ALTER TABLE Loadingarm_information
+    ADD CONSTRAINT FK_Loadingarm_information_user_id_Nomal User_n_id FOREIGN KEY (user_id)
+        REFERENCES Nomal_User (n_id) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+ALTER TABLE Loadingarm information
+    ADD CONSTRAINT FK_Loadingarm information_port_num_Port information_p_id FOREIGN KEY (port_num)
+        REFERENCES Port information (p_id) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+
+-- Nomal User Table Create SQL
+CREATE TABLE Loadingarm working now info
+(
+    `loadingarm_num`  VARCHAR(45)    NOT NULL    COMMENT '로딩암고유번호', 
+    `t_out`           VARCHAR(45)    NULL        COMMENT '하선장소', 
+    `t_date`          DATETIME       NULL        COMMENT '반출시간', 
+    `t_state`         TINYINT        NULL        COMMENT '반출상태', 
+    `t_ship`          VARCHAR(45)    NULL        COMMENT '모선번호', 
+    `substop_01`      DOUBLE         NULL        COMMENT '멈췄을때서브모터값1', 
+    `substop_02`      DOUBLE         NULL        COMMENT '멈췄을때서브모터값2', 
+    PRIMARY KEY (loadingarm_num)
+);
+
+ALTER TABLE Loadingarm working now info COMMENT '로딩암현재작업정보';
+
+ALTER TABLE Loadingarm working now info
+    ADD CONSTRAINT FK_Loadingarm working now info_t_ship_ship information_t_shipid FOREIGN KEY (t_ship)
+        REFERENCES ship information (t_shipid) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+
+-- Nomal User Table Create SQL
+CREATE TABLE Loadingarm working now info_copy1
+(
+    `loadingarm_num`  VARCHAR(45)    NOT NULL    COMMENT '로딩암고유번호', 
+    `t_out`           VARCHAR(45)    NULL        COMMENT '하선장소', 
+    `t_date`          DATETIME       NULL        COMMENT '반출시간', 
+    `t_state`         TINYINT        NULL        COMMENT '반출상태', 
+    `t_ship`          VARCHAR(45)    NULL        COMMENT '모선번호', 
+    `substop_01`      DOUBLE         NULL        COMMENT '멈췄을때서브모터값1', 
+    `substop_02`      DOUBLE         NULL        COMMENT '멈췄을때서브모터값2', 
+    PRIMARY KEY (loadingarm_num)
+);
+
+ALTER TABLE Loadingarm working now info_copy1 COMMENT '목업현재작업정보';
+
+
