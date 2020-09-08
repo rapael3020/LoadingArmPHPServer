@@ -1,6 +1,18 @@
-﻿//필요없는 DB 정리 예정 
+﻿-- DB최종
 
--- Loadingarm Table Create SQL
+-- ship_information Table Create SQL
+CREATE TABLE ship_information
+(
+    `t_shipid`        VARCHAR(45)    NOT NULL    COMMENT '모선번호', 
+    `t_date`          DATETIME       NULL        COMMENT '반출일자', 
+    `loadingarm_num`  VARCHAR(45)    NULL        COMMENT '로딩암고유번호', 
+    PRIMARY KEY (t_shipid)
+);
+
+ALTER TABLE ship_information COMMENT '모선정보';
+
+
+-- ship_information Table Create SQL
 CREATE TABLE Nomal_User
 (
     `n_id`     VARCHAR(30)    NOT NULL    COMMENT 'ID', 
@@ -15,7 +27,7 @@ CREATE TABLE Nomal_User
 ALTER TABLE Nomal_User COMMENT '일반사용자';
 
 
---Loadingarm Table Create SQL
+-- ship_information Table Create SQL
 CREATE TABLE Port_information
 (
     `p_id`            VARCHAR(45)    NOT NULL    COMMENT '항만고유번호', 
@@ -29,19 +41,7 @@ CREATE TABLE Port_information
 ALTER TABLE Port_information COMMENT '항만정보';
 
 
--- Loadingarm Table Create SQL
-CREATE TABLE ship_information
-(
-    `t_shipid`        VARCHAR(45)    NOT NULL    COMMENT '모선번호', 
-    `t_date`          DATETIME       NULL        COMMENT '반출일자', 
-    `loadingarm_num`  VARCHAR(45)    NULL        COMMENT '로딩암고유번호', 
-    PRIMARY KEY (t_shipid)
-);
-
-ALTER TABLE ship_information COMMENT '모선정보';
-
-
--- Loadingarm Table Create SQL
+-- ship_information Table Create SQL
 CREATE TABLE Loadingarm_information
 (
     `t_num`     VARCHAR(45)    NOT NULL    COMMENT '로딩암고유번호', 
@@ -54,15 +54,15 @@ CREATE TABLE Loadingarm_information
 ALTER TABLE Loadingarm_information COMMENT '로딩암정보';
 
 ALTER TABLE Loadingarm_information
-    ADD CONSTRAINT FK_Loadingarm_information_user_id_Nomal User_n_id FOREIGN KEY (user_id)
+    ADD CONSTRAINT FK_Loadingarm_information_user_id_Nomal_User_n_id FOREIGN KEY (user_id)
         REFERENCES Nomal_User (n_id) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 ALTER TABLE Loadingarm_information
-    ADD CONSTRAINT FK_Loadingarm information_port_num_Port information_p_id FOREIGN KEY (port_num)
-        REFERENCES Port information (p_id) ON DELETE RESTRICT ON UPDATE RESTRICT;
+    ADD CONSTRAINT FK_Loadingarm_information_port_num_Port_information_p_id FOREIGN KEY (port_num)
+        REFERENCES Port_information (p_id) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 
--- Loadingarm Table Create SQL
+-- ship_information Table Create SQL
 CREATE TABLE Loadingarm_working_now_info
 (
     `loadingarm_num`  VARCHAR(45)    NOT NULL    COMMENT '로딩암고유번호', 
@@ -70,19 +70,20 @@ CREATE TABLE Loadingarm_working_now_info
     `t_date`          DATETIME       NULL        COMMENT '반출시간', 
     `t_state`         TINYINT        NULL        COMMENT '반출상태', 
     `t_ship`          VARCHAR(45)    NULL        COMMENT '모선번호', 
-    `substop_03`      DOUBLE         NULL        COMMENT '시뮬멈췄을때서브모터값3', 
-    `substop_04`      DOUBLE         NULL        COMMENT '시뮬멈췄을때서브모터값4', 
+    `substop_04`      DOUBLE         NULL        COMMENT '멈췄을때서브모터값4', 
+    `substop_05`      DOUBLE         NULL        COMMENT '멈췄을때서브모터값5', 
+    `substop_06`      DOUBLE         NULL        COMMENT '멈췄을때서브모터값6', 
     PRIMARY KEY (loadingarm_num)
 );
 
 ALTER TABLE Loadingarm_working_now_info COMMENT '로딩암현재작업정보';
 
 ALTER TABLE Loadingarm_working_now_info
-    ADD CONSTRAINT FK_Loadingarm working_now_info_t_ship_ship information_t_shipid FOREIGN KEY (t_ship)
+    ADD CONSTRAINT FK_Loadingarm_working_now_info_t_ship_ship_information_t_shipid FOREIGN KEY (t_ship)
         REFERENCES ship_information (t_shipid) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 
--- Loadingarm Table Create SQL
+-- ship_information Table Create SQL
 CREATE TABLE mockup_working_now_info
 (
     `loadingarm_num`  VARCHAR(45)    NOT NULL    COMMENT '로딩암고유번호', 
@@ -92,9 +93,40 @@ CREATE TABLE mockup_working_now_info
     `t_ship`          VARCHAR(45)    NULL        COMMENT '모선번호', 
     `substop_01`      DOUBLE         NULL        COMMENT '멈췄을때서브모터값1', 
     `substop_02`      DOUBLE         NULL        COMMENT '멈췄을때서브모터값2', 
+    `substop_03`      DOUBLE         NULL        COMMENT '멈췄을때서브모터값3', 
     PRIMARY KEY (loadingarm_num)
 );
 
 ALTER TABLE mockup_working_now_info COMMENT '목업현재작업정보';
+
+ALTER TABLE mockup_working_now_info
+    ADD CONSTRAINT FK_mockup_working_now_info_t_ship_ship_information_t_shipid FOREIGN KEY (t_ship)
+        REFERENCES ship_information (t_shipid) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+
+-- ship_information Table Create SQL
+CREATE TABLE Simulation
+(
+    `s_x1`  VARCHAR(45)    NULL        COMMENT 'x관절1', 
+    `s_y1`  VARCHAR(45)    NULL        COMMENT 'y관절1', 
+    `s_z1`  VARCHAR(45)    NULL        COMMENT 'z관절1', 
+    `i_1`   INT            NOT NULL    AUTO_INCREMENT COMMENT 'Index', 
+    PRIMARY KEY (i_1)
+);
+
+ALTER TABLE Simulation COMMENT '시뮬레이션로딩암관절값';
+
+
+-- ship_information Table Create SQL
+CREATE TABLE Mockup
+(
+    `i_2`   INT            NOT NULL    AUTO_INCREMENT COMMENT 'index2', 
+    `m_x2`  VARCHAR(45)    NULL        COMMENT 'x관절2', 
+    `m_y2`  VARCHAR(45)    NULL        COMMENT 'y관절2', 
+    `m_y3`  VARCHAR(45)    NULL        COMMENT 'z관절2', 
+    PRIMARY KEY (i_2)
+);
+
+ALTER TABLE Mockup COMMENT '목업관절값';
 
 
