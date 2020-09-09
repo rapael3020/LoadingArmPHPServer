@@ -12,15 +12,16 @@ $mysqli = new mysqli($host, $user, $pw, $dbname);
 
         $sensor1 = $_GET["sensor1"];
         $sensor2 = $_GET["sensor2"];
+        $sensor3 = $_GET["sensor3"];
 
-        $query = "INSERT INTO mockup_working_now_info(substop_01,substop_02) VALUES('$sensor1','$sensor2')";
+        $query = "INSERT INTO mockup_working_now_info(substop_01, substop_02, substop_03) VALUES('$sensor1','$sensor2','$sensor3')";
         mysqli_query($mysqli,$query);
 
         echo"</br>success!!";
     }
 
     else{
-        echo "유빈아 연결안됐어";
+        echo "error to connected";
     }
 
     mysqli_close($mysqli);
