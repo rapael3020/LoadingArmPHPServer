@@ -9,6 +9,7 @@ $mysqli = new mysqli($host, $user, $pw, $dbname);
 
     if($mysqli){
         echo "MySQL successfully connected!<br/>";
+        //x,y,z 관절값 받아오기
 
         $sensor4 = $_GET["sensor4"];
         $sensor5 = $_GET["sensor5"];
