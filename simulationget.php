@@ -1,11 +1,12 @@
 <?php
 header("Content-Type: text/html;charset=UTF-8");
 
-$host = 'localhost';
-$user = 'root';
-$pw = '111111';
-$dbname = 'LoadingArm';
-$mysqli = new mysqli($host, $user, $pw, $dbname);
+$host = '3.34.94.167';
+$user = 'test';
+$pw = 'testtest';
+$dbname = 'loadingarm';
+$host = '3306';
+$mysqli = new mysqli($host, $user, $pw, $dbname, $host);
 
     if($mysqli){
         echo "MySQL successfully connected!<br/>";
@@ -15,7 +16,7 @@ $mysqli = new mysqli($host, $user, $pw, $dbname);
         $sensor5 = $_GET["sensor5"];
         $sensor6 = $_GET["sensor6"];
 
-        $query = "INSERT INTO Loadingarm_working_now_info(substop_04,substop_05,substop_06) VALUES('$sensor4','$sensor5','$sensor6')";
+        $query = "INSERT INTO simulation(s_x1,s_y1,s_z1) VALUES('$sensor4','$sensor5','$sensor6')";
         mysqli_query($mysqli,$query);
 
         echo"</br>success!!";
