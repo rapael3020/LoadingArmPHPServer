@@ -1,8 +1,8 @@
 <?php
-$host = '3.34.94.167';
+$host = '';
 $user = 'test';
-$password = 'testtest';
-$database_name = 'loadingarm';
+$password = '';
+$database_name = '';
 $host = '3306';
  
 $con = new mysqli($host, $user, $password, $database_name, $host);

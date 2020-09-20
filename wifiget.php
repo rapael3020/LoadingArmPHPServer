@@ -1,10 +1,10 @@
 <?php
 header("Content-Type: text/html;charset=UTF-8");
 
-$host = 'localhost';
-$user = 'root';
-$pw = '111111';
-$dbname = 'LoadingArm';
+$host = '';
+$user = '';
+$pw = '';
+$dbname = '';
 $mysqli = new mysqli($host, $user, $pw, $dbname);
 
     if($mysqli){

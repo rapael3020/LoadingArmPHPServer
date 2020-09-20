@@ -1,10 +1,10 @@
 <?php
 header("Content-Type: text/html;charset=UTF-8");
 
-$host = '3.34.94.167';
-$user = 'test';
-$pw = 'testtest';
-$dbname = 'loadingarm';
+$host = '';
+$user = '';
+$pw = '';
+$dbname = '';
 $host = '3306';
 $mysqli = new mysqli($host, $user, $pw, $dbname, $host);
 

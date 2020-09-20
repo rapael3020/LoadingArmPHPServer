@@ -1,7 +1,7 @@
 <?php
 $host = 'localhost';
-$user = 'root';
-$password = '111111';
+$user = '';
+$password = '';
 $database_name = 'LoadingArm';
  
 $conn = new mysqli($host, $user, $password, $database_name);

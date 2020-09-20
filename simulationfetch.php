@@ -1,8 +1,8 @@
 <?php
 $host = 'localhost';
-$user = 'root';
-$password = '111111';
-$database_name = 'LoadingArm';
+$user = '';
+$password = '';
+$database_name = '';
  
 $conn = new mysqli($host, $user, $password, $database_name);
 $query = "select s_x1, s_y1, s_z1 from Simulation";

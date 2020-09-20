@@ -1,10 +1,11 @@
 <?php
-$host = 'localhost';
-$user = 'root';
-$password = '111111';
-$database_name = 'LoadingArm';
+$host = '';
+$user = 'test';
+$password = '';
+$database_name = '';
+$host = '3306';
  
-$conn = new mysqli($host, $user, $password, $database_name);
+$conn = new mysqli($host, $user, $password, $database_name, $host);
 
 if($conn){
     echo "MySQL 접속 성공";
