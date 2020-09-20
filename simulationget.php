@@ -19,7 +19,7 @@ $mysqli = new mysqli($host, $user, $pw, $dbname, $host);
         $query = "INSERT INTO simulation(s_x1,s_y1,s_z1) VALUES('$sensor4','$sensor5','$sensor6')";
         mysqli_query($mysqli,$query);
 
-        echo"</br>success!!";
+        echo"</br>success!!!";
     }
 
     else{
