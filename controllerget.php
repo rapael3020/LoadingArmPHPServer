@@ -1,7 +1,7 @@
 <?php
-   $sensor4 = $_GET["sensor4"];
-   $sensor5 = $_GET["sensor5"];
-   $sensor6 = $_GET["sensor6"];
+   $sensorA = $_GET["sensorA"];
+   $sensorB = $_GET["sensorB"];
+   $sensorC = $_GET["sensorC"];
 ?>
 
 <!doctype html>
@@ -17,8 +17,8 @@
     </style>
   </head>
   <body>
-    <p>Sensor1 is <?php echo $sensor4 ?>.</p>
-    <p>Sensor2 is <?php echo $sensor5 ?>.</p>
-    <p>Sensor3 is <?php echo $sensor6 ?>.</p>
+    <p>Sensor1 is <?php echo $sensorA ?>.</p>
+    <p>Sensor2 is <?php echo $sensorB ?>.</p>
+    <p>Sensor3 is <?php echo $sensorC ?>.</p>
   </body>
 </html>
