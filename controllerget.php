@@ -1,7 +1,14 @@
 <?php
-   $sensorA = $_GET["sensorA"];
-   $sensorB = $_GET["sensorB"];
-   $sensorC = $_GET["sensorC"];
+$host = '';
+$user = '';
+$password = '';
+$database_name = 'LoadingArm';
+ 
+$conn = new mysqli($host, $user, $password, $database_name);
+ 
+$sensorA = $_GET["sensorA"];
+$sensorB = $_GET["sensorB"];
+$sensorC = $_GET["sensorC"];
 ?>
 
 <!doctype html>
