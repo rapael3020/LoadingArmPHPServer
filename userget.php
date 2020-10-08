@@ -4,7 +4,7 @@ header("Content-Type: text/html;charset=UTF-8");
 $host = '3.34.94.167';
 $user = '';
 $pw = '';
-$dbname = 'loadingarm';
+$dbname = '';
 $host = '3306';
 $mysqli = new mysqli($host, $user, $pw, $dbname, $host);
 
