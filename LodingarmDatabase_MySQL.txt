@@ -83,25 +83,6 @@ ALTER TABLE Loadingarm_working_now_info
         REFERENCES ship_information (t_shipid) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 
--- ship_information Table Create SQL
-CREATE TABLE mockup_working_now_info
-(
-    `loadingarm_num`  VARCHAR(45)    NOT NULL    COMMENT '로딩암고유번호', 
-    `t_out`           VARCHAR(45)    NULL        COMMENT '하선장소', 
-    `t_date`          DATETIME       NULL        COMMENT '반출시간', 
-    `t_state`         TINYINT        NULL        COMMENT '반출상태', 
-    `t_ship`          VARCHAR(45)    NULL        COMMENT '모선번호', 
-    `substop_01`      DOUBLE         NULL        COMMENT '멈췄을때서브모터값1', 
-    `substop_02`      DOUBLE         NULL        COMMENT '멈췄을때서브모터값2', 
-    `substop_03`      DOUBLE         NULL        COMMENT '멈췄을때서브모터값3', 
-    PRIMARY KEY (loadingarm_num)
-);
-
-ALTER TABLE mockup_working_now_info COMMENT '목업현재작업정보';
-
-ALTER TABLE mockup_working_now_info
-    ADD CONSTRAINT FK_mockup_working_now_info_t_ship_ship_information_t_shipid FOREIGN KEY (t_ship)
-        REFERENCES ship_information (t_shipid) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 
 -- ship_information Table Create SQL
@@ -115,19 +96,5 @@ CREATE TABLE Simulation
 );
 
 ALTER TABLE Simulation COMMENT '시뮬레이션로딩암관절값';
-
-
--- ship_information Table Create SQL
-CREATE TABLE Mockup
-(
-    `i_2`   INT            NOT NULL    AUTO_INCREMENT COMMENT 'index2', 
-    `m_x2`  VARCHAR(45)    NULL        COMMENT 'x관절2', 
-    `m_y2`  VARCHAR(45)    NULL        COMMENT 'y관절2', 
-    `m_y3`  VARCHAR(45)    NULL        COMMENT 'z관절2', 
-    
-    PRIMARY KEY (i_2)
-);
-
-ALTER TABLE Mockup COMMENT '목업관절값';
 
 
