@@ -85,16 +85,4 @@ ALTER TABLE Loadingarm_working_now_info
 
 
 
--- ship_information Table Create SQL
-CREATE TABLE Simulation
-(
-    `s_x1`  VARCHAR(45)    NULL        COMMENT 'x관절1', 
-    `s_y1`  VARCHAR(45)    NULL        COMMENT 'y관절1', 
-    `s_z1`  VARCHAR(45)    NULL        COMMENT 'z관절1', 
-    `i_1`   INT            NOT NULL    AUTO_INCREMENT COMMENT 'Index', 
-    PRIMARY KEY (i_1)
-);
-
-ALTER TABLE Simulation COMMENT '시뮬레이션로딩암관절값';
-
 
