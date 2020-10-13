@@ -1,4 +1,4 @@
-<?php $conn = mysqli_connect( '', 'test', '', 'loadingarm', '3306');//db정보
+<?php $conn = mysqli_connect( '', '', '', '', '3306');//db정보
  if (mysqli_connect_errno())
   {
        echo "Failed to connect to MySQL: " . mysqli_connect_error();
