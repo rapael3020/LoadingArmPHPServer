@@ -1,7 +1,7 @@
 <?php
 header("Content-Type: text/html;charset=UTF-8");
 
-$host = 'localhost';
+$host = '';
 $user = '';
 $pw = '';
 $dbname = '';
@@ -22,7 +22,7 @@ $mysqli = new mysqli($host, $user, $pw, $dbname);
     }
 
     else{
-        echo "세환아 데이터 안와";
+        echo "error";
     }
 
     mysqli_close($mysqli);
